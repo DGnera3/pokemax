@@ -61,16 +61,16 @@ function App() {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Cargando...</div>;
   }
 
   return (
-    <div className="App" style={{ backgroundImage: "url(fondo.jpeg)" }}>
+    <div className="App" style={{ backgroundImage: "url(fondo.png)" }}>
   
       <nav className="navbar">
         <div className="navbar-brand">
-          <img src="public/logo.png" className="logo-img" alt="Pokemax Logo" />
-          <h1 className='title'>Pokemax</h1>
+          <img src="logo.png" className="logo-img" alt="Pokemax Logo" />
+          <h1 className='title'>Pokémax</h1>
         </div>
 
         {/* Alineación horizontal del campo de búsqueda y el botón */}
@@ -78,7 +78,7 @@ function App() {
           <input
             type="text"
             className="search-input"
-            placeholder="Search Pokémon"
+            placeholder="Buscar Pokémon"
             value={searchTerm}
             onChange={handleSearch}
           />
@@ -94,29 +94,29 @@ function App() {
               className="contenido"
               onClick={() => handlePokemonClick(pokemon)} 
             >
-              <h2>{pokemon.name}</h2>
+              <h2>#{pokemon.id} {pokemon.name}</h2>
               <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-              <p>Height: {pokemon.height}</p>
-              <p>Weight: {pokemon.weight}</p>
+              <p>Altura: {pokemon.height/10}m</p>
+              <p>Peso: {pokemon.weight/10}kg</p>
             </div>
           ))
         ) : (
-          <p>No Pokémon found</p>
+          <p>Pokémon no encontrado</p>
         )}
       </div>
 
       {selectedPokemon && (
         <div className="modal">
           <div className="modal-content">
-            <span className="close" onClick={handleCloseModal}>&times;</span>
+            <span className="close" onClick={handleCloseModal}>&otimes;</span>
             <div className="pokemon-modal">
               <img src={selectedPokemon.sprites.front_default} alt={selectedPokemon.name} className="pokemon-modal-img" />
               <div className="pokemon-modal-info">
                 <h2>{selectedPokemon.name}</h2>
-                <p>Height: {selectedPokemon.height}</p>
-                <p>Weight: {selectedPokemon.weight}</p>
-                <p>Types: {selectedPokemon.types.map(type => type.type.name).join(', ')}</p>
-                <p>Abilities: {selectedPokemon.abilities.map(ability => ability.ability.name).join(', ')}</p>
+                <p>Altura: {selectedPokemon.height/10}m</p>
+                <p>Peso: {selectedPokemon.weight/10}kg</p>
+                <p>Tipo(s): {selectedPokemon.types.map(type => type.type.name).join(', ')}</p>
+                <p>Habilidades: {selectedPokemon.abilities.map(ability => ability.ability.name).join(', ')}</p>
               </div>
             </div>
           </div>
